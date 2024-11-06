@@ -297,7 +297,7 @@ def load_data(**kwargs):
 
     result = {
         "data_cardio": df1_normalize.to_dict(orient='records'),
-        "data_deaths": df2_normalize.to_dict(orient='records')
+        "data_deaths": df2.to_dict(orient='records')
     }
 
     kwargs['ti'].xcom_push(key='data_load', value=json.dumps(result))
