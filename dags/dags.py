@@ -23,7 +23,7 @@ from dags.etl import *
 default_args = {
     'owner': 'Airflow_proyecto',
     'depends_on_past': False,
-    'start_date': datetime(2024, 10, 21),  # Update the start date to today or an appropriate date
+    'start_date': datetime(2024, 11, 6),  # Update the start date to today or an appropriate date
     'email': ['airflow@example.com'],
     'email_on_failure': False,
     'email_on_retry': False,

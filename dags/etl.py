@@ -292,12 +292,16 @@ def load_data(**kwargs):
     df2['obesity_prevalence_percentage'] = df2['obesity_prevalence_percentage'].fillna(df2['obesity_prevalence_percentage'].mean())
     df2['diabetes_prevalence_percentage'] = df2['diabetes_prevalence_percentage'].fillna(df2['diabetes_prevalence_percentage'].mean())
 
+    df2_copy = df2.copy()
+
     df1_normalize, df2_normalize = DimensionalModel(df1,df2)
 
+    
+    log.info(df2_copy.columns)
 
     result = {
         "data_cardio": df1_normalize.to_dict(orient='records'),
-        "data_deaths": df2.to_dict(orient='records')
+        "data_deaths": df2_copy.to_dict(orient='records')
     }
 
     kwargs['ti'].xcom_push(key='data_load', value=json.dumps(result))

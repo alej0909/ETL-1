@@ -21,7 +21,7 @@ def kafka_producer(data):
     )
     
     for index in range(len(data)):
-        time.sleep(3)  
+        time.sleep(5)  
         row = data.iloc[index].to_dict()
         producer.send("kafka_project", value=row)  
         print(f"Message sent: {row}\n")
@@ -45,7 +45,3 @@ def kafka_consumer():
             send_to_powerbi(row_data)
     except Exception as e:
         print(f"Error: {e}")
-
-
-if __name__ == "__main__":
-    kafka_consumer()
